@@ -1,0 +1,16 @@
+version: '2'
+services:
+  ecommerceep4-mongodb:
+    image: mongo:4.2.7
+    ports:
+      - '27017:27017'
+    command: mongos --configdb csvr/ecommerceep4-mongodb-config --bind_ip 0.0.0.0
+  ecommerceep4-mongodb-node:
+    build:
+      context: .
+      dockerfile: mongodb/MongoDB.Dockerfile
+    command: mongod --shardsvr --replSet rs1
+  ecommerceep4-mongodb-config:
+    image: mongo:4.2.7
+    container_name: ecommerceep4-mongodb-config
+    command: mongod --configsvr --dbpath /data/db --replSet csvr

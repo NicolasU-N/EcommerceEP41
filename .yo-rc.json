@@ -1,0 +1,43 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "co.edu.usco.ecommerce",
+      "nativeLanguage": "es"
+    },
+    "jhipsterVersion": "6.10.3",
+    "applicationType": "monolith",
+    "baseName": "ecommerceEp4",
+    "packageName": "co.edu.usco.ecommerce",
+    "packageFolder": "co/edu/usco/ecommerce",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "no",
+    "enableHibernateCache": false,
+    "websocket": false,
+    "databaseType": "mongodb",
+    "devDatabaseType": "mongodb",
+    "prodDatabaseType": "mongodb",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": false,
+    "buildTool": "maven",
+    "enableSwaggerCodegen": true,
+    "jwtSecretKey": "ZGZiNTliZmIyMjY3Y2NhNzc2Nzg2ZmQ0NGRmMjljNmNjNTcyOTVmNTg2YzQ2NTU3ZDNkMzFhZGI2NjVjZDcyY2M2NThhNDRlMTZmM2I0ZDhkY2JiMGI0NzU0NmVlNzI1NjNlOWQxYmFiZGVmODU4MTM0MTlmZGU0OTZhYzMyZDk=",
+    "embeddableLaunchScript": false,
+    "useSass": true,
+    "clientPackageManager": "npm",
+    "clientFramework": "angularX",
+    "clientTheme": "materia",
+    "clientThemeVariant": "dark",
+    "creationTimestamp": 1617481902235,
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [],
+    "enableTranslation": true,
+    "nativeLanguage": "es",
+    "languages": ["es"],
+    "blueprints": []
+  }
+}
