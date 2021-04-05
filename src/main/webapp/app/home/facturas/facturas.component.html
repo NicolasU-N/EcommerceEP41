@@ -1,22 +1,29 @@
-<div *ngFor="let factura of facturas">
-    <p>ID: {{factura.id}}</p>
-    <table class="table table-striped" aria-describedby="page-heading">
-        <thead>
-            <tr>
-                <th>Nombre</th>
-                <th>Precio</th>
-                <th>Descripción</th>
-                <th>Cantidad</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let pedidos of factura.pedidos">
-                <td>{{pedidos.producto!.nombre}}</td>
-                <td>{{pedidos.producto!.precio}}</td>
-                <td>{{pedidos.producto!.descripcion}}</td>
-                <td>{{pedidos.cantidad}}</td>
-            </tr>
-        </tbody>
-    </table>
-    <p>TOTAL: {{factura.total}}</p>
+<div class="container">
+    <h2 *ngIf="facturas.length === 0">NO HAY FACTURAS!</h2>
+    <div *ngIf="facturas.length > 0">
+        <div *ngFor="let factura of facturas">
+            <p class="titulo">FACTURA ID: {{factura.id}}</p>
+            <table class="table table-striped" aria-describedby="page-heading">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Precio</th>
+                        <th>Descripción</th>
+                        <th>Cantidad</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let pedidos of factura.pedidos">
+                        <td>{{pedidos.producto!.nombre}}</td>
+                        <td>{{pedidos.producto!.precio}}</td>
+                        <td>{{pedidos.producto!.descripcion}}</td>
+                        <td>{{pedidos.cantidad}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="titulo">TOTAL: {{factura.total}}</p>
+        </div>
+    </div>
+    
 </div>
+

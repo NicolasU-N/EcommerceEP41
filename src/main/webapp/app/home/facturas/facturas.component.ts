@@ -13,7 +13,9 @@ export class FacturasComponent implements OnInit {
 
   constructor(private accountService: AccountService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.obtenerFacturas();
+  }
 
   obtenerFacturas(): void {
     this.accountService.getAuthenticationState().subscribe(account => (this.facturas = account!.facturas));
