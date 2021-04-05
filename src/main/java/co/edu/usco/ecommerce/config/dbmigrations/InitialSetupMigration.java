@@ -1,6 +1,10 @@
 package co.edu.usco.ecommerce.config.dbmigrations;
 
+import co.edu.usco.ecommerce.domain.AudProducto;
 import co.edu.usco.ecommerce.domain.Authority;
+import co.edu.usco.ecommerce.domain.Factura;
+import co.edu.usco.ecommerce.domain.Pedido;
+import co.edu.usco.ecommerce.domain.Producto;
 import co.edu.usco.ecommerce.domain.User;
 import co.edu.usco.ecommerce.security.AuthoritiesConstants;
 
@@ -8,7 +12,9 @@ import com.github.mongobee.changeset.ChangeLog;
 import com.github.mongobee.changeset.ChangeSet;
 import org.springframework.data.mongodb.core.MongoTemplate;
 
+import java.math.BigDecimal;
 import java.time.Instant;
+import java.util.Set;
 
 /**
  * Creates the initial database setup.
@@ -90,4 +96,34 @@ public class InitialSetupMigration {
         userUser.getAuthorities().add(userAuthority);
         mongoTemplate.save(userUser);
     }
+
+    @ChangeSet(order = "03", author = "initiator", id = "03-addProducto")
+    public void addProducto(MongoTemplate mongoTemplate) {
+        Producto producto = new Producto("Coca Cola", new BigDecimal(2000), 19.0, 100L, 0L);
+        mongoTemplate.save(producto);
+    }
+
+    @ChangeSet(order = "04", author = "initiator", id = "04-addAudProducto")
+    public void addAudProducto(MongoTemplate mongoTemplate) {
+        Producto producto = new Producto("Coca Cola", new BigDecimal(2000), 19.0, 100L, 2L);
+        producto.setId("ObjectId(\"6069e33f4d7cc854044f8d2b\")");
+        AudProducto AudProducto = new AudProducto("INSERT", Instant.now(), producto);
+        mongoTemplate.save(AudProducto);
+    }
+
+    /*
+     * @ChangeSet(order = "05", author = "initiator", id = "05-addPedido") public
+     * void addPedido(MongoTemplate mongoTemplate) { Pedido pedido = new
+     * Pedido("ObjectId(\"6069e33f4d7cc854044f8d2b\")", 2L);
+     * mongoTemplate.save(pedido); }
+     */
+
+    /*
+     * @ChangeSet(order = "06", author = "initiator", id = "06-addFactura") public
+     * void addFactura(MongoTemplate mongoTemplate) { Factura factura = new
+     * Factura(Instant.now(), new BigDecimal(4000), 1L, Set.of( new
+     * Pedido("ObjectId(\"6069efcf4d7cc854044f8d41\")",
+     * "ObjectId(\"6069e33f4d7cc854044f8d2b\")", 2L))); mongoTemplate.save(factura);
+     * }
+     */
 }

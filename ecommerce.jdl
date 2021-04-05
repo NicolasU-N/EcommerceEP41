@@ -1,0 +1,44 @@
+entity Producto {
+    nombre String required,
+    precio BigDecimal required,
+    iva Double required,
+    cantidadInventario Long required,
+    cantidadVentas Long required,
+    imagen String,
+    descripcion String
+}
+
+entity Pedido {
+	productoId String required,
+    cantidad Long required
+}
+
+entity AudProducto {
+	tipo String required,
+    fecha Instant required
+}
+
+entity Factura {
+    fecha Instant required,
+    total BigDecimal required,
+    estado Long required
+}
+
+relationship OneToOne {
+	AudProducto{producto} to Producto
+}
+
+relationship OneToMany {
+	Factura{pedidos} to Pedido
+}
+
+// Set pagination options
+paginate * with pagination
+
+// Use Data Transfer Objects (DTO)
+dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl
+
+

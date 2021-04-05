@@ -1,0 +1,24 @@
+{
+  "ecommerceEp4App": {
+    "audProducto": {
+      "home": {
+        "title": "Aud Productos",
+        "createLabel": "Crear nuevo Aud Producto",
+        "createOrEditLabel": "Crear o editar Aud Producto",
+        "notFound": "Ningún Aud Productos encontrado"
+      },
+      "created": "Un nuevo Aud Producto ha sido creado con el identificador {{ param }}",
+      "updated": "Un Aud Producto ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Aud Producto ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Aud Producto {{ id }}?"
+      },
+      "detail": {
+        "title": "Aud Producto"
+      },
+      "tipo": "Tipo",
+      "fecha": "Fecha",
+      "producto": "Producto"
+    }
+  }
+}

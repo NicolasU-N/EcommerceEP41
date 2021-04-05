@@ -21,7 +21,7 @@ import java.util.Set;
 /**
  * A user.
  */
-@org.springframework.data.mongodb.core.mapping.Document(collection = "jhi_user")
+@org.springframework.data.mongodb.core.mapping.Document(collection = "usuarios")
 public class User extends AbstractAuditingEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -79,6 +79,14 @@ public class User extends AbstractAuditingEntity implements Serializable {
     @JsonIgnore
     private Set<Authority> authorities = new HashSet<>();
 
+    @Field("direccion")
+    private String direccion;
+
+    @Field("numero_documento")
+    private String numeroDocumento;
+
+    @JsonIgnore
+    private Set<Factura> facturas = new HashSet<>();
 
     public String getId() {
         return id;
@@ -185,6 +193,22 @@ public class User extends AbstractAuditingEntity implements Serializable {
         this.authorities = authorities;
     }
 
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public String getNumeroDocumento() {
+        return numeroDocumento;
+    }
+
+    public void setNumeroDocumento(String numeroDocumento) {
+        this.numeroDocumento = numeroDocumento;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -201,18 +225,21 @@ public class User extends AbstractAuditingEntity implements Serializable {
         return 31;
     }
 
-    // prettier-ignore
+    public Set<Factura> getFacturas() {
+        return facturas;
+    }
+
+    public void setFacturas(Set<Factura> facturas) {
+        this.facturas = facturas;
+    }
+
     @Override
     public String toString() {
-        return "User{" +
-            "login='" + login + '\'' +
-            ", firstName='" + firstName + '\'' +
-            ", lastName='" + lastName + '\'' +
-            ", email='" + email + '\'' +
-            ", imageUrl='" + imageUrl + '\'' +
-            ", activated='" + activated + '\'' +
-            ", langKey='" + langKey + '\'' +
-            ", activationKey='" + activationKey + '\'' +
-            "}";
+        return "User [activated=" + activated + ", activationKey=" + activationKey + ", authorities=" + authorities
+                + ", direccion=" + direccion + ", email=" + email + ", facturas=" + facturas + ", firstName="
+                + firstName + ", id=" + id + ", imageUrl=" + imageUrl + ", langKey=" + langKey + ", lastName="
+                + lastName + ", login=" + login + ", numeroDocumento=" + numeroDocumento + ", password=" + password
+                + ", resetDate=" + resetDate + ", resetKey=" + resetKey + "]";
     }
+
 }

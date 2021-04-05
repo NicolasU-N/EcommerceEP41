@@ -6,7 +6,12 @@ import co.edu.usco.ecommerce.domain.Authority;
 import co.edu.usco.ecommerce.domain.User;
 
 import javax.validation.constraints.*;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.time.Instant;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -14,7 +19,7 @@ import java.util.stream.Collectors;
  * A DTO representing a user, with his authorities.
  */
 public class UserDTO {
-
+    Logger log = LoggerFactory.getLogger(UserDTO.class);
     private String id;
 
     @NotBlank
@@ -50,6 +55,12 @@ public class UserDTO {
 
     private Set<String> authorities;
 
+    private String direccion;
+
+    private String numeroDocumento;
+
+    private Set<FacturaDTO> facturas = new HashSet<>();
+
     public UserDTO() {
         // Empty constructor needed for Jackson.
     }
@@ -67,9 +78,10 @@ public class UserDTO {
         this.createdDate = user.getCreatedDate();
         this.lastModifiedBy = user.getLastModifiedBy();
         this.lastModifiedDate = user.getLastModifiedDate();
-        this.authorities = user.getAuthorities().stream()
-            .map(Authority::getName)
-            .collect(Collectors.toSet());
+        this.authorities = user.getAuthorities().stream().map(Authority::getName).collect(Collectors.toSet());
+        this.direccion = user.getDireccion();
+        this.numeroDocumento = user.getNumeroDocumento();
+        this.facturas = user.getFacturas().stream().map(FacturaDTO::new).collect(Collectors.toSet());
     }
 
     public String getId() {
@@ -176,22 +188,37 @@ public class UserDTO {
         this.authorities = authorities;
     }
 
-    // prettier-ignore
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public String getNumeroDocumento() {
+        return numeroDocumento;
+    }
+
+    public void setNumeroDocumento(String numeroDocumento) {
+        this.numeroDocumento = numeroDocumento;
+    }
+
+    public Set<FacturaDTO> getFacturas() {
+        return facturas;
+    }
+
+    public void setFacturas(Set<FacturaDTO> facturas) {
+        this.facturas = facturas;
+    }
+
     @Override
     public String toString() {
-        return "UserDTO{" +
-            "login='" + login + '\'' +
-            ", firstName='" + firstName + '\'' +
-            ", lastName='" + lastName + '\'' +
-            ", email='" + email + '\'' +
-            ", imageUrl='" + imageUrl + '\'' +
-            ", activated=" + activated +
-            ", langKey='" + langKey + '\'' +
-            ", createdBy=" + createdBy +
-            ", createdDate=" + createdDate +
-            ", lastModifiedBy='" + lastModifiedBy + '\'' +
-            ", lastModifiedDate=" + lastModifiedDate +
-            ", authorities=" + authorities +
-            "}";
+        return "UserDTO [activated=" + activated + ", authorities=" + authorities + ", createdBy=" + createdBy
+                + ", createdDate=" + createdDate + ", direccion=" + direccion + ", email=" + email + ", facturas="
+                + facturas + ", firstName=" + firstName + ", id=" + id + ", imageUrl=" + imageUrl + ", langKey="
+                + langKey + ", lastModifiedBy=" + lastModifiedBy + ", lastModifiedDate=" + lastModifiedDate
+                + ", lastName=" + lastName + ", login=" + login + ", numeroDocumento=" + numeroDocumento + "]";
     }
+
 }

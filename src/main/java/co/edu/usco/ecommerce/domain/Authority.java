@@ -10,7 +10,7 @@ import java.util.Objects;
 /**
  * An authority (a security role) used by Spring Security.
  */
-@Document(collection = "jhi_authority")
+@Document(collection = "autoridades")
 public class Authority implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -47,8 +47,6 @@ public class Authority implements Serializable {
     // prettier-ignore
     @Override
     public String toString() {
-        return "Authority{" +
-            "name='" + name + '\'' +
-            "}";
+        return "Authority{" + "name='" + name + '\'' + "}";
     }
 }

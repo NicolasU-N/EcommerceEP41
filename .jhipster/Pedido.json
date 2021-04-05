@@ -1,0 +1,35 @@
+{
+  "name": "Pedido",
+  "fields": [
+    {
+      "fieldName": "productoId",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "cantidad",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "factura",
+      "otherEntityRelationshipName": "pedidos",
+      "relationshipName": "factura",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20210404153458",
+  "entityTableName": "pedido",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

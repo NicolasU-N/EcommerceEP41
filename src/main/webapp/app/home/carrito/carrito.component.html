@@ -1,0 +1,43 @@
+<table class="table table-striped" aria-describedby="page-heading">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Precio</th>
+            <th>cantidad</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let pedido of pedidos; index as index">
+            <td>{{pedido.producto!.nombre}}</td>
+            <td>{{pedido.producto!.precio}}</td>
+            <td>
+                <div [formGroup]="form">
+                    <input [formControlName]="pedido.producto!.id!" name="amount" type="number"
+                placeholder="Cantidad" min="1" [max]="pedido.producto!.cantidadInventario" required
+                (input)="onInputFieldAmount(pedido, getReactiveControl(pedido.producto!.id!))" />
+                <button class="btn btn-danger" aria-label="Remove bill-product"
+                    (click)="onClickSpliceBillProduct(index, pedido.producto!.id!)">Borrar
+                </button>
+                <p *ngIf="getReactiveControl(pedido.producto!.id!)!.hasError('required')">
+                Cantidad es requerida
+                </p>
+                <p *ngIf="getReactiveControl(pedido.producto!.id!)!.hasError('min')">
+                    Valor minimo es 1
+                </p>
+                <p *ngIf="getReactiveControl(pedido.producto!.id!)!.hasError('max')">
+                    Valor maximo es {{pedido.producto!.cantidadInventario}}
+                </p>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="3" style="font-weight: bold; font-size: 20;">TOTAL: {{totalFactura | currency: 'COP'}}</td>
+        </tr>
+    </tfoot>
+</table>
+
+<button class="btn btn-success" aria-label="Remove bill-product"
+    (click)="hacerPedido()">Hacer pedido
+</button>

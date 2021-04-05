@@ -1,0 +1,22 @@
+<div *ngFor="let factura of facturas">
+    <p>ID: {{factura.id}}</p>
+    <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Descripción</th>
+                <th>Cantidad</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let pedidos of factura.pedidos">
+                <td>{{pedidos.producto!.nombre}}</td>
+                <td>{{pedidos.producto!.precio}}</td>
+                <td>{{pedidos.producto!.descripcion}}</td>
+                <td>{{pedidos.cantidad}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <p>TOTAL: {{factura.total}}</p>
+</div>

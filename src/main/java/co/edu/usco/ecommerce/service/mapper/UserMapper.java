@@ -4,6 +4,7 @@ import co.edu.usco.ecommerce.domain.Authority;
 import co.edu.usco.ecommerce.domain.User;
 import co.edu.usco.ecommerce.service.dto.UserDTO;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -12,17 +13,17 @@ import java.util.stream.Collectors;
 /**
  * Mapper for the entity {@link User} and its DTO called {@link UserDTO}.
  *
- * Normal mappers are generated using MapStruct, this one is hand-coded as MapStruct
- * support is still in beta, and requires a manual step with an IDE.
+ * Normal mappers are generated using MapStruct, this one is hand-coded as
+ * MapStruct support is still in beta, and requires a manual step with an IDE.
  */
 @Service
 public class UserMapper {
 
+    @Autowired
+    private FacturaMapper facturaMapper;
+
     public List<UserDTO> usersToUserDTOs(List<User> users) {
-        return users.stream()
-            .filter(Objects::nonNull)
-            .map(this::userToUserDTO)
-            .collect(Collectors.toList());
+        return users.stream().filter(Objects::nonNull).map(this::userToUserDTO).collect(Collectors.toList());
     }
 
     public UserDTO userToUserDTO(User user) {
@@ -30,10 +31,7 @@ public class UserMapper {
     }
 
     public List<User> userDTOsToUsers(List<UserDTO> userDTOs) {
-        return userDTOs.stream()
-            .filter(Objects::nonNull)
-            .map(this::userDTOToUser)
-            .collect(Collectors.toList());
+        return userDTOs.stream().filter(Objects::nonNull).map(this::userDTOToUser).collect(Collectors.toList());
     }
 
     public User userDTOToUser(UserDTO userDTO) {
@@ -51,10 +49,10 @@ public class UserMapper {
             user.setLangKey(userDTO.getLangKey());
             Set<Authority> authorities = this.authoritiesFromStrings(userDTO.getAuthorities());
             user.setAuthorities(authorities);
+            user.setFacturas(facturaMapper.toSetFactura(userDTO.getFacturas()));
             return user;
         }
     }
-
 
     private Set<Authority> authoritiesFromStrings(Set<String> authoritiesAsString) {
         Set<Authority> authorities = new HashSet<>();
