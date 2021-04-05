@@ -39,7 +39,7 @@ export const pedidoRoute: Routes = [
     path: '',
     component: PedidoComponent,
     data: {
-      authorities: [Authority.USER],
+      authorities: [Authority.ADMIN],
       defaultSort: 'id,asc',
       pageTitle: 'ecommerceEp4App.pedido.home.title',
     },
@@ -52,7 +52,7 @@ export const pedidoRoute: Routes = [
       pedido: PedidoResolve,
     },
     data: {
-      authorities: [Authority.USER],
+      authorities: [Authority.ADMIN],
       pageTitle: 'ecommerceEp4App.pedido.home.title',
     },
     canActivate: [UserRouteAccessService],
@@ -64,7 +64,7 @@ export const pedidoRoute: Routes = [
       pedido: PedidoResolve,
     },
     data: {
-      authorities: [Authority.USER],
+      authorities: [Authority.ADMIN],
       pageTitle: 'ecommerceEp4App.pedido.home.title',
     },
     canActivate: [UserRouteAccessService],
@@ -76,7 +76,7 @@ export const pedidoRoute: Routes = [
       pedido: PedidoResolve,
     },
     data: {
-      authorities: [Authority.USER],
+      authorities: [Authority.ADMIN],
       pageTitle: 'ecommerceEp4App.pedido.home.title',
     },
     canActivate: [UserRouteAccessService],

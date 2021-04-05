@@ -5,7 +5,7 @@
 
     <div class="col-md-9">
         <h3 *ngIf="!isAuthenticated()">Bienvenido a Ecommerce</h3>
-        <table *ngIf="isAuthenticated()" class="table table-striped" aria-describedby="page-heading">
+        <table *jhiHasAnyAuthority="'ROLE_USER'" class="table table-striped" aria-describedby="page-heading">
             <thead>
                 <tr>
                     <th>Nombre</th>

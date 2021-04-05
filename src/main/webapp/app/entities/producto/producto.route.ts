@@ -39,7 +39,7 @@ export const productoRoute: Routes = [
     path: '',
     component: ProductoComponent,
     data: {
-      authorities: [Authority.USER],
+      authorities: [Authority.ADMIN],
       defaultSort: 'id,asc',
       pageTitle: 'ecommerceEp4App.producto.home.title',
     },
@@ -52,7 +52,7 @@ export const productoRoute: Routes = [
       producto: ProductoResolve,
     },
     data: {
-      authorities: [Authority.USER],
+      authorities: [Authority.ADMIN],
       pageTitle: 'ecommerceEp4App.producto.home.title',
     },
     canActivate: [UserRouteAccessService],
@@ -64,7 +64,7 @@ export const productoRoute: Routes = [
       producto: ProductoResolve,
     },
     data: {
-      authorities: [Authority.USER],
+      authorities: [Authority.ADMIN],
       pageTitle: 'ecommerceEp4App.producto.home.title',
     },
     canActivate: [UserRouteAccessService],
@@ -76,7 +76,7 @@ export const productoRoute: Routes = [
       producto: ProductoResolve,
     },
     data: {
-      authorities: [Authority.USER],
+      authorities: [Authority.ADMIN],
       pageTitle: 'ecommerceEp4App.producto.home.title',
     },
     canActivate: [UserRouteAccessService],

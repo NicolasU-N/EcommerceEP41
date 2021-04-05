@@ -39,7 +39,7 @@ export const facturaRoute: Routes = [
     path: '',
     component: FacturaComponent,
     data: {
-      authorities: [Authority.USER],
+      authorities: [Authority.ADMIN],
       defaultSort: 'id,asc',
       pageTitle: 'ecommerceEp4App.factura.home.title',
     },
@@ -52,7 +52,7 @@ export const facturaRoute: Routes = [
       factura: FacturaResolve,
     },
     data: {
-      authorities: [Authority.USER],
+      authorities: [Authority.ADMIN],
       pageTitle: 'ecommerceEp4App.factura.home.title',
     },
     canActivate: [UserRouteAccessService],
@@ -64,7 +64,7 @@ export const facturaRoute: Routes = [
       factura: FacturaResolve,
     },
     data: {
-      authorities: [Authority.USER],
+      authorities: [Authority.ADMIN],
       pageTitle: 'ecommerceEp4App.factura.home.title',
     },
     canActivate: [UserRouteAccessService],
@@ -76,7 +76,7 @@ export const facturaRoute: Routes = [
       factura: FacturaResolve,
     },
     data: {
-      authorities: [Authority.USER],
+      authorities: [Authority.ADMIN],
       pageTitle: 'ecommerceEp4App.factura.home.title',
     },
     canActivate: [UserRouteAccessService],

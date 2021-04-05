@@ -18,6 +18,6 @@ export class FacturasComponent implements OnInit {
   }
 
   obtenerFacturas(): void {
-    this.accountService.getAuthenticationState().subscribe(account => (this.facturas = account!.facturas));
+    this.accountService.identity(true).subscribe(account => (this.facturas = account!.facturas));
   }
 }
